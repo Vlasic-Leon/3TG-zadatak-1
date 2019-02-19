@@ -1,0 +1,68 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+*  Project name: Zadatak 1
+*  Start time:   19.II.2019.  08:01:21
+*  Finish time:  19.II.2019.  08:24:40
+*  Author:       Vlasic Leon
+*/
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+struct Drzava
+{
+	string naziv_drzave, naziv_naj_vrha;
+	int pov_drzave, br_stan, visina_naj_vrha;
+
+};
+
+
+int main()
+{
+	fstream MyFile_1("C:\\Users\\ucenik.TSC\\Desktop\\Drzava.txt");
+
+	Drzava poljeDrzava[5];
+
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "Upisi naziv drzave: ";
+		cin >> poljeDrzava[i].naziv_drzave;
+		cout << "Upisi povrsinu drzave: ";
+		cin >> poljeDrzava[i].pov_drzave;
+		cout << "Upisi broj stan. te drzave: ";
+		cin >> poljeDrzava[i].br_stan;
+		cout << "Upisi naziv najviseg vrha: ";
+		cin >> poljeDrzava[i].naziv_naj_vrha;
+		cout << "Upisi visinu najviseg vrha: ";
+		cin >> poljeDrzava[i].visina_naj_vrha;
+	}
+
+
+	if (MyFile_1.is_open())
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			MyFile_1 << poljeDrzava[i].naziv_drzave << " ";
+			MyFile_1 << poljeDrzava[i].pov_drzave << " ";
+			MyFile_1 << poljeDrzava[i].br_stan << " ";
+			MyFile_1 << poljeDrzava[i].naziv_naj_vrha << " ";
+			MyFile_1 << poljeDrzava[i].visina_naj_vrha << "\n";
+		}
+
+
+		MyFile_1.close();
+	}
+
+	else cout << "Unable to open file";
+
+
+
+	system("pause");
+	return 0;
+}
+
